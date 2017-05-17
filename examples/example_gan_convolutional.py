@@ -113,7 +113,7 @@ if __name__ == "__main__":
     xtest = dim_ordering_fix(xtest.reshape((-1, 1, 28, 28)))
     y = gan_targets(xtrain.shape[0])
     ytest = gan_targets(xtest.shape[0])
-    history = model.fit(x=xtrain, y=y, validation_data=(xtest, ytest), callbacks=[generator_cb], nb_epoch=100,
+    history = model.fit(x=xtrain, y=y, validation_data=(xtest, ytest), callbacks=[generator_cb], epochs=100,
                         batch_size=32)
     df = pd.DataFrame(history.history)
     df.to_csv("output/gan_convolutional/history.csv")
