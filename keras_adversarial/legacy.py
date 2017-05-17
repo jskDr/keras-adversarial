@@ -43,9 +43,12 @@ def BatchNormalization(mode=0, **kwargs):
 
 def Convolution2D(units, w, h, W_regularizer=None, W_initializer='glorot_uniform', border_mode='same', **kwargs):
     if keras_2:
-        return keras.layers.Convolution2D(units, (w, h), padding=border_mode, kernel_regularizer=W_regularizer,
+        #return keras.layers.Convolution2D(units, (w, h), padding=border_mode, kernel_regularizer=W_regularizer,
+        #                                  kernel_initializer=W_initializer,
+        #                                  **kwargs)
+        return keras.layers.Conv2D(units, (w, h), padding=border_mode, kernel_regularizer=W_regularizer,
                                           kernel_initializer=W_initializer,
-                                          **kwargs)
+                                          **kwargs)        
     else:
         return keras.layers.Convolution2D(units, w, h, border_mode=border_mode, W_regularizer=W_regularizer,
                                           init=W_initializer,
